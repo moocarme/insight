@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<link href="css/bootstrap.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Inconsolata|New+Rocker|Open+Sans|Metal+Mania" rel="stylesheet"> 
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet"> 
+<style>
+
+@import url(http://fonts.googleapis.com/css?family=PT+Serif|PT+Serif:b|PT+Serif:i);
+
+section {
+  
+  background: url("img/twinkle_twinkle.png");
+  color: #fff;
+  padding: 2em;
+  font-family: 'Exo', sans-serif;
+  padding-top:2em;
+}
+
+h1 {
+  font-family: 'Metal Mania', cursive;
+  font-size: 150%;
+  color: #f2ca27;
+}
+#follow {
+  background: none;
+}
+
+.grey {
+  color: #777;
+}
+
+.myyellow{
+  color: #f2ca27;
+}
+
+a:link,
+a:visited {
+  color: #f2ca27;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+.aParent div {
+  float: left;
+  clear: none; 
+}
+</style>
+<script src="js/d3.js"></script>
+<script src="js/underscore.js"></script>
+<script src="js/mapper.js"></script>
+
+    <body>
+<section style="text-align:center;padding-top:5em;">
+  <h1 style="font-size:300%; color: #f2ca27;"><b>Sound Check</b></h1><br>
+    <p style="font-size:150%;">Learn to play your favorite songs</p>
+  <!--<p class="grey">Scroll down to continue.-->
+</section>
+
+<section style="padding:5em 9em;">
+  <h1 style="color: #f2ca27; font-size: 200%"><b>Problem:</b></h1>
+    <p><br>Learning how to play instruments is hard. 
+    <br>You're motivated to play songs you enjoy listening to, but they're often out of your skill level
+    <div class='container'>
+      <div class='row'>
+        <div class="col-lg-6" ></div>
+        <div class="col-lg-6" >
+          <img src="img/sad_piccolo.gif" style = "border:5px solid white; width:90%">
+        </div>
+
+      </div>
+    </div>
+</section>
+
+<section style="text-align:center;padding-top:3em;">
+  <p>The solution is <h1 style="color: #f2ca27; font-size:200%"><big>Sound Check!</big></h1></p>
+  <hr style="height:10px; visibility:hidden;" />
+
+    <p>Sound Check recommends songs based on listening preference <big style="color: #f2ca27">AND</big> skill level</p><br>
+    <img src="img/giphy.gif" style = "border:5px solid white">
+</section>
+
+<section style="text-align:center;padding-top:2em;">
+  <div class="container">
+    <div class="header-content">
+      <h1 style="font-size:150%;">How Does Sound Check Solve This Problem?</h1><br>
+    </div>
+      <div class="row">
+          <div class="col-lg-6" style = "text-align:left">
+               <div class="header-content">
+                  <u>Recommendation engine</u><br>
+               </div>
+
+               <p>2.4Gb subset of the Million Song Dataset</p><br>
+               <p>Latent semantic analysis to quickly perform cosine user-user similarity via singular value decomposition</p>
+          </div>
+          <div class="col-lg-6">
+            <br>
+              <img src="img/mf3.jpg" width = "100%" style = "border:5px solid white">
+          </div>
+        </div>
+      </div>
+
+</section>
+
+
+<section style="text-align:center;padding-top:2em;width=100%">
+  <div class="container">
+    <div class="header-content">
+      <h1 style="font-size:150%;">How Does Sound Check solves this problem?</h1><br>
+    </div>
+      <div class="row">
+          <div class="col-lg-6" style = "text-align:left">
+                Tablature Notation
+               <img src="img/tabs_ex2_cropped.png" width = "100%" style = "border:5px solid white">
+          </div>
+          <div class="col-lg-6" style = "text-align:left">
+              <div class="header-content">
+                  <u>Song difficulty evaluator</u><br>
+               </div>
+               
+               <p>Music notation scraped from over 1 million webpages</p><br>
+               <p>Logistic Regression trains on ~36.0% labelled set into <i>novice</i>, <i>intermediate</i>, & <i>advanced</i></p>
+          </div>
+        </div>
+      </div>
+</section>
+
+
+<section style="text-align:center;padding-top:2em;">
+  <h1>Determining Song Difficulty Level</h1><br>
+  <p>10-fold cross-validated logistic regression to classify the music notations into difficulty levels</p>
+    <p>The main advantage is interpretable results</p><br>
+    <h1>Features</h1>
+    <ul>
+      <li>Chords used, i.e., C, G, D</li>
+      <li>Number of chords</li>
+      <li>Speed the song is played at</li>
+      <li>Position of notes on the fretboard</li>
+    </ul>
+</section>
+
+<section style="text-align:center;padding-top:2em;">
+  <div class="container">
+    <div class="header-content">
+      <h1 style="font-size:150%;">Determining Song Difficulty Level</h1><br>
+    </div>
+      <div class="row"style = "text-align:center display:inline-block">
+          <div class="col-sm-5" style = "text-align:left; display:inline-block">
+               <div class="header-content">
+                  A Different Model For Each Instrument<br>
+               </div><br>
+               <table class="table table-hover">
+               <tr style="color:#f2ca27;"><th>Instrument</th><th>Accuracy</th></tr>
+               <tr><td>Guitar</td><td>76.9%</td></tr>
+               <tr><td>Ukulele</td><td>77.7%</td></tr>
+               <tr><td>Bass</td><td>58.9%</td></tr>
+               <tr><td>Guitar Tabs</td><td>52.4%</td></tr>
+               <tr><td>Drums</td><td>45.4%</td></tr>
+               </table>
+          </div>
+          <div class="col-sm-7" style = "text-align:center display:inline-block">
+              <div class="header-content">
+                  <u>Typical ROC Characteristics</u><br>
+               </div><br>
+               
+               <img src="img/ukuleleROC.png" width = "100%">
+          </div>
+          
+        </div>
+      </div>
+</section>
+
+<section style="text-align:center;padding-top:2em;">
+  <div class="container">
+    <div class="header-content">
+      <h1 style="font-size:150%;">Determining Song Difficulty Level</h1>
+              
+
+   
+      <div class="row">
+          
+          <div class="col-sm-12" style = "text-align:center">
+              <div class="header-content">
+                  <u>Model Coefficients</u>
+               </div>
+               <div class="row" >
+                <div class = "col-sm-4" style = "display:inline-block">
+                  <img src="img/top5easy.png" width = "100%" style = "border:5px solid white">
+                </div>
+                <div class = "col-sm-4" style="font-size:70%;display:inline-block">
+                  <p>Easy chord - C</p>
+                  <p>High Coefficient for <i>novice</i> classification</p>
+                </div>
+                <div class = "col-sm-4" style = "display:inline-block;">
+                  <img src="img/uk_C.jpg" width = "83%" style = "border:5px solid white">
+                </div>
+               </div>
+               
+               <hr>
+               
+               <div class="row">
+                <div class = "col-sm-4" style = "display:inline-block">
+                  <img src="img/top5advanced.png" width = "100%" style = "border:5px solid white">
+                </div>
+                <div class = "col-sm-4"style="font-size:70%">
+                  <p>Hard chord - Eb2</p>
+                  <p>High Coefficient for <i>advanced</i> classification</p>
+                </div>
+                <div class = "col-sm-4" >
+                  <img src="img/uk_Eb2.jpg" width = "83%"  style = "border:5px solid white;">
+                </div>
+               </div>
+               
+          </div>
+        </div>
+      </div>
+</section>
+
+
+<section style="text-align:center;padding:2em;">
+<h1>Data Insights</h1>
+<h2>The progression of ukulele chords within songs</h2>
+
+<iframe src="http://www.mattmoocar.me/chord-plot/" width="640" height = "480" marginwidth="0" marginheight="0" scrolling="no"  frameBorder="0" ></iframe>
+</section>
+
+<!-- zoom in on iframe content
+<iframe src="" style = :"-ms-zoom: 0.75; -moz-transform: scale(0.75); -moz-transform-origin: 0 0;-o-transform: scale(0.75); -o-transform-origin: 0 0; -webkit-transform: scale(0.75); -webkit-transform-origin: 0 0;"></iframe>
+-->
+
+<!--<section id="follow" style="padding-top:5em;background:url(sky.jpg);background-size:cover;">
+  <p style="text-align:center;color:#000;font-size:200%;line-height:1.35em;">INSPIRATIONAL IMAGE<br>ACCOMPANIED BY<br>INSIGHTFUL COMMENTARY
+  <p id="follow-anchor" style="position:fixed;text-indent:-1.25em;">&larr; When this bar reaches the top,<br>the next slide will fade in.
+</section>
+-->
+<section id="lorenz" style="text-align:center;padding-top:0;">
+  <canvas></canvas>
+  <h1 style="position:absolute;z-index:3;padding-top:1em;left:0;width:100%;text-shadow:0 1px 0 #000;">About Me</h1><br>
+  <div class = 'container'style="padding-top:4em;text-align:center;">
+    <div class = "row">
+      <div class="col-sm-6" style = "text-align:left">
+               <div class="header-content">
+                  PhD Physicist <i class="fa fa-arrow-right" aria-hidden="true"></i> Data Scientist<br>
+               </div>
+               
+               
+          </div>
+          <div class="col-sm-6" style = "text-align:center">
+              <div class="header-content">
+                  <u></u>
+                    <p><a href="https://github.com/moocarme">Github<i class="fa fa-github-alt"></i></a></p>
+                    <p><a href="https://linkedin.com/in/matthew-moocarme">LinkedIn<i class="fa fa-linkedin"></i></a></p>
+                    <p><a href="mailto:moocarme@gmail.com"><i class="fa fa-envelope-o"></i></a></p>
+                    <p><a href="http://www.mattmoocar.me"><i class="fa fa-diamond"></i></a></p>
+                </li>
+               </div>
+               <img src="img/profile3-01.png" style = 'width:50%'>
+          </div>
+ <ul class="list-inline list-social">
+                <p>
+                    <a href="https://github.com/moocarme"><i class="fa fa-github-alt"></i></a>
+                </p>
+                <li class="social-linkedin">
+                    <a href="https://linkedin.com/in/matthew-moocarme"><i class="fa fa-linkedin"></i></a>
+                </li>
+                <li class="social-mail">
+                    <a href="mailto:moocarme@gmail.com"><i class="fa fa-envelope-o"></i></a>
+                </li>
+                <li class="social-web">
+                    <a href="http://www.mattmoocar.me"><i class="fa fa-diamond"></i></a>
+                </li>
+            </ul>
+    </div>
+   
+  </div>
+
+</section>
+<!--
+<section style="padding:5em 13em;">
+  <p>Stack is made by <a href="http://bost.ocks.org/mike/" rel="author">Mike Bostock</a>
+    <br>and is available on <a href="https://github.com/mbostock/stack">GitHub</a>
+    <br>under the <a href="https://github.com/mbostock/stack/blob/gh-pages/LICENSE">BSD license</a>.
+  <p><a style="color:#777;text-decoration:none;" href="https://github.com/mbostock/stack">View source to get started.</a>
+</section>
+
+-->
+</body>
+<script src="js/d3.v3.min.js"></script>
+<script src="js/stack.v2.js"></script>
+<script>
+function openCity(evt, cityName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the link that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+var mystack = stack()
+    .on("activate", activate)
+    .on("deactivate", deactivate);
+
+var section = d3.selectAll("section"),
+    follow = d3.select("#follow"),
+    followAnchor = d3.select("#follow-anchor"),
+    lorenz = d3.select("#lorenz"),
+    followIndex = section[0].indexOf(follow.node()),
+    lorenzIndex = section[0].indexOf(lorenz.node());
+
+function refollow() {
+  followAnchor.style("top", (followIndex + (1 - mystack.scrollRatio()) / 2 - d3.event.offset) * 100 + "%");
+}
+
+function activate(d, i) {
+  if (i === followIndex) mystack.on("scroll.follow", refollow);
+  if (i === lorenzIndex) startLorenz();
+}
+
+function deactivate(d, i) {
+  if (i === followIndex) mystack.on("scroll.follow", null);
+  if (i === lorenzIndex) stopLorenz();
+}
+
+var lorenzInterval;
+
+function startLorenz() {
+  var δτ = 0.003,
+      ρ = 28,
+      σ = 10,
+      β = 8 / 3,
+      x = .5,
+      y = .5,
+      z = 10,
+      n = 30;
+
+  var width = 1280,
+      height = 720;
+
+  var canvas = d3.select("canvas")
+      .style("position", "absolute")
+      .style("top", 0)
+      .style("left", 0)
+      .style("width", "100%")
+      .style("height", "100%")
+      .attr("width", width)
+      .attr("height", height);
+
+  var color = d3.scale.linear()
+      .domain([0, 20, 30, 50])
+      .range(["yellow", "orange", "brown", "purple"])
+      .interpolate(d3.interpolateHcl);
+
+  var context = canvas.node().getContext("2d");
+
+  context.lineWidth = .2;
+  context.fillStyle = "rgba(0,0,0,.03)";
+
+  d3.timer(function() {
+    context.save();
+    context.globalCompositeOperation = "darker";
+    context.translate(width / 2, height / 2);
+    context.scale(12, 14);
+    context.rotate(30);
+    for (var i = 0; i < n; ++i) {
+      context.strokeStyle = color(z);
+      context.beginPath();
+      context.moveTo(x, y);
+      x += δτ * σ * (y - x);
+      y += δτ * (x * (ρ - z) - y);
+      z += δτ * (x * y - β * z);
+      context.lineTo(x, y);
+      context.stroke();
+    }
+    context.restore();
+    return !lorenzInterval;
+  });
+
+  lorenzInterval = setInterval(function() {
+    context.fillRect(0, 0, width, height);
+  }, 100);
+}
+
+function stopLorenz() {
+  lorenzInterval = clearInterval(lorenzInterval);
+}
+
+</script>
