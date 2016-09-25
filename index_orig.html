@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+<style>
+
+@import url(http://fonts.googleapis.com/css?family=PT+Serif|PT+Serif:b|PT+Serif:i);
+#tooltip {
+        color: white;
+        opacity: .9;
+        background: #333;
+        padding: 5px;
+        border: 1px solid lightgrey;
+        border-radius: 5px;
+        position: absolute;
+        z-index: 10;
+        visibility: hidden;
+        white-space: nowrap;
+        pointer-events: none;
+      }
+      #circle circle {
+        fill: none;
+        pointer-events: all;
+      }
+      path.group {
+        fill-opacity: .8;
+      }
+      path.chord {
+        fill-opacity: .8;
+        stroke: #000;
+        stroke-width: .25px;
+      }
+      #circle:hover path.fade {
+        display: none;
+      }
+section {
+  background: #000;
+  color: #fff;
+  padding: 2em;
+  font-family: "PT Serif", Baskerville, Georgia;
+}
+
+#follow {
+  background: none;
+}
+
+.grey {
+  color: #777;
+}
+
+a:link,
+a:visited {
+  color: orange;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+</style>
+<script src="lib/d3.js"></script>
+    <script src="lib/underscore.js"></script>
+    <script src="js/mapper.js"></script>
+    <script>
+   
+    </script>
+    <body>
+<section style="text-align:center;padding-top:5em;">
+  <p style="font-size:120%;"><b><a href="https://github.com/mbostock/stack">Stack</a></b> is a presentation library<br> with simple, scroll-based navigation.
+  <p class="grey">Scroll down to continue.
+</section>
+
+<section style="padding:5em 9em;">
+  <p>In addition to the mouse,
+    <br>you can scroll with the keyboard:
+    <br>use the <b>arrow keys</b>,
+    <br>the <b>space bar</b>,
+    <br>or <b>page up</b> and <b>page down</b>.
+  <p class="grey">Multiple key presses will skip multiple slides.
+</section>
+
+<section style="text-align:center;padding-top:5em;">
+  <p>You can even grab the scroll bar!
+</section>
+
+<section style="text-align:center;padding:.35em;font-size:1000%;">
+  <div id="tooltip"></div>
+    
+</section>
+
+
+
+<section id="follow" style="padding-top:5em;background:url(sky.jpg);background-size:cover;">
+  <p style="text-align:center;color:#000;font-size:200%;line-height:1.35em;">INSPIRATIONAL IMAGE<br>ACCOMPANIED BY<br>INSIGHTFUL COMMENTARY
+  <p id="follow-anchor" style="position:fixed;text-indent:-1.25em;">&larr; When this bar reaches the top,<br>the next slide will fade in.
+</section>
+
+<section style="text-align:center;padding-top:5em;">
+  <p>If you resize the window,
+    <br>slide content will scale up or down
+    <br>to fit automatically.
+</section>
+
+<section id="lorenz" style="text-align:center;padding-top:0;">
+  <canvas></canvas>
+  <p style="position:absolute;z-index:1;padding-top:5em;left:0;width:100%;text-shadow:0 1px 0 #000;">Use <i>activate</i> and <i>deactivate</i> events
+    <br>to enable complex animations
+    <br>only when visible.
+</section>
+
+<section style="padding:5em 13em;">
+  <p>Stack is made by <a href="http://bost.ocks.org/mike/" rel="author">Mike Bostock</a>
+    <br>and is available on <a href="https://github.com/mbostock/stack">GitHub</a>
+    <br>under the <a href="https://github.com/mbostock/stack/blob/gh-pages/LICENSE">BSD license</a>.
+  <p><a style="color:#777;text-decoration:none;" href="https://github.com/mbostock/stack">View source to get started.</a>
+</section>
+</body>
+<script src="d3.v3.min.js"></script>
+<script src="stack.v2.js"></script>
+<script>
+   //*******************************************************************
+      //  CREATE MATRIX AND MAP
+      //*******************************************************************
+      d3.csv('data/test_output3.csv', function (error, data) {
+        var mpr = chordMpr(data);
+
+        mpr
+          .addValuesToMap('has')
+          .setFilter(function (row, a, b) {
+            return (row.has === a.name && row.prefers === b.name)
+          })
+          .setAccessor(function (recs, a, b) {
+            if (!recs[0]) return 0;
+            return +recs[0].count;
+          });
+        drawChords(mpr.getMatrix(), mpr.getMap());
+      });
+      //*******************************************************************
+      //  DRAW THE CHORD DIAGRAM
+      //*******************************************************************
+      function drawChords (matrix, mmap) {
+        var w = 780, h = 600, r1 = h / 2, r0 = r1 - 100;
+
+        var fill = d3.scale.ordinal()
+            .domain(d3.range(4))
+            .range(["#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e", "#95a5a6", "#ecf0f1", "#e74c3c", "#e67e22", "#e67e22", "#f1c40f", "#f39c12", "#7f8c8d", "#D50200", "#27ae60", "#2980b9"]);
+
+        var chord = d3.layout.chord()
+            .padding(.02)
+            .sortSubgroups(d3.descending)
+            .sortChords(d3.descending);
+
+        var arc = d3.svg.arc()
+            .innerRadius(r0)
+            .outerRadius(r0 + 20);
+
+        var svg = d3.select("div#tooltip").append("svg:svg")
+            .attr("width", w)
+            .attr("height", h)
+            .append("svg:g")
+            .attr("id", "circle")
+            .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
+
+            svg.append("circle")
+                .attr("r", r0 + 20);
+            
+            
+        var rdr = chordRdr(matrix, mmap);
+        chord.matrix(matrix);
+
+        var g = svg.selectAll("g.group")
+            .data(chord.groups())
+          .enter().append("svg:g")
+            .attr("class", "group")
+            .on("mouseover", mouseover)
+            .on("mouseout", function (d) { d3.select("#tooltip").style("visibility", "hidden") });
+
+        g.append("svg:path")
+            .style("stroke", "black")
+            .style("fill", function(d) { return fill(d.index); })
+            .attr("d", arc);
+
+        g.append("svg:text")
+            .each(function(d) { d.angle = (d.startAngle + d.endAngle) / 2; })
+            .attr("dy", ".35em")
+            .style("font-family", "helvetica, arial, sans-serif")
+            .style("fill", "white")
+            .style("font-size", "30px")
+            .attr("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
+            .attr("transform", function(d) {
+              return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
+                  + "translate(" + (r0 + 26) + ")"
+                  + (d.angle > Math.PI ? "rotate(180)" : "");
+            })
+            .text(function(d) { return rdr(d).gname; });
+
+          var chordPaths = svg.selectAll("path.chord")
+                .data(chord.chords())
+              .enter().append("svg:path")
+                .attr("class", "chord")
+                .style("stroke", function(d) { return d3.rgb(fill(d.target.index)).darker(); })
+                .style("fill", function(d) { return fill(d.target.index); })
+                .attr("d", d3.svg.chord().radius(r0))
+                .on("mouseover", function (d) {
+                  d3.select("#tooltip")
+                    .style("visibility", "visible")
+                    .html(chordTip(rdr(d)))
+                    .style("top", function () { return (d3.event.pageY - 100)+"px"})
+                    .style("left", function () { return (d3.event.pageX - 100)+"px";})
+                })
+                .on("mouseout", function (d) { d3.select("#tooltip").style("visibility", "hidden") });
+
+          function chordTip (d) {
+            var p = d3.format(".2%"), q = d3.format(",.3r")
+            return "Chord Info:<br/>"
+              + p(d.svalue/d.stotal) + " (" + q(d.svalue) + ") of "
+              + d.sname + " chords go to " + d.tname
+              + (d.sname === d.tname ? "": ("<br/>while...<br/>"
+              + p(d.tvalue/d.ttotal) + " (" + q(d.tvalue) + ") of "
+              + d.tname + " chords go to " + d.sname))
+          }
+
+          function groupTip (d) {
+            var p = d3.format(".1%"), q = d3.format(",.3r")
+            return "Group Info:<br/>"
+                + d.gname + " : " + q(d.gvalue) + "<br/>"
+                + p(d.gvalue/d.mtotal) + " of Matrix Total (" + q(d.mtotal) + ")"
+          }
+
+          function mouseover(d, i) {
+            d3.select("#tooltip")
+              .style("visibility", "visible")
+              .html(groupTip(rdr(d)))
+              .style("top", function () { return (d3.event.pageY - 80)+"px"})
+              .style("left", function () { return (d3.event.pageX - 130)+"px";})
+
+            chordPaths.classed("fade", function(p) {
+              return p.source.index != i
+                  && p.target.index != i;
+            });
+          }
+      }
+
+var mystack = stack()
+    .on("activate", activate)
+    .on("deactivate", deactivate);
+
+var section = d3.selectAll("section"),
+    follow = d3.select("#follow"),
+    followAnchor = d3.select("#follow-anchor"),
+    lorenz = d3.select("#lorenz"),
+    followIndex = section[0].indexOf(follow.node()),
+    lorenzIndex = section[0].indexOf(lorenz.node());
+
+function refollow() {
+  followAnchor.style("top", (followIndex + (1 - mystack.scrollRatio()) / 2 - d3.event.offset) * 100 + "%");
+}
+
+function activate(d, i) {
+  if (i === followIndex) mystack.on("scroll.follow", refollow);
+  if (i === lorenzIndex) startLorenz();
+}
+
+function deactivate(d, i) {
+  if (i === followIndex) mystack.on("scroll.follow", null);
+  if (i === lorenzIndex) stopLorenz();
+}
+
+var lorenzInterval;
+
+function startLorenz() {
+  var δτ = 0.003,
+      ρ = 28,
+      σ = 10,
+      β = 8 / 3,
+      x = .5,
+      y = .5,
+      z = 10,
+      n = 30;
+
+  var width = 1280,
+      height = 720;
+
+  var canvas = d3.select("canvas")
+      .style("position", "absolute")
+      .style("top", 0)
+      .style("left", 0)
+      .style("width", "100%")
+      .style("height", "100%")
+      .attr("width", width)
+      .attr("height", height);
+
+  var color = d3.scale.linear()
+      .domain([0, 20, 30, 50])
+      .range(["yellow", "orange", "brown", "purple"])
+      .interpolate(d3.interpolateHcl);
+
+  var context = canvas.node().getContext("2d");
+
+  context.lineWidth = .2;
+  context.fillStyle = "rgba(0,0,0,.03)";
+
+  d3.timer(function() {
+    context.save();
+    context.globalCompositeOperation = "lighter";
+    context.translate(width / 2, height / 2);
+    context.scale(12, 14);
+    context.rotate(30);
+    for (var i = 0; i < n; ++i) {
+      context.strokeStyle = color(z);
+      context.beginPath();
+      context.moveTo(x, y);
+      x += δτ * σ * (y - x);
+      y += δτ * (x * (ρ - z) - y);
+      z += δτ * (x * y - β * z);
+      context.lineTo(x, y);
+      context.stroke();
+    }
+    context.restore();
+    return !lorenzInterval;
+  });
+
+  lorenzInterval = setInterval(function() {
+    context.fillRect(0, 0, width, height);
+  }, 100);
+}
+
+function stopLorenz() {
+  lorenzInterval = clearInterval(lorenzInterval);
+}
+
+</script>
