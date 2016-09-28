@@ -3,17 +3,12 @@
 <meta name="viewport" content="width=device-width">
 <link href="css/bootstrap.css" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css?family=Inconsolata|New+Rocker|Open+Sans|Metal+Mania" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Inconsolata|Exo|Open+Sans|Metal+Mania" rel="stylesheet"> 
 <link rel="stylesheet" href="font-awesome-4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="vendor/device-mockups/device-mockups2.css">
-<link rel="stylesheet" href="vendor/device-mockups/device-mockups.css">
-<link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet"> 
-<link href="css/bokeh.css" rel="stylesheet" type="text/css" />
-
 <title>Matt Moocarme - The Data Scientist you Should Hire</title>
 <style>
 
-@import url(http://fonts.googleapis.com/css?family=PT+Serif|PT+Serif:b|PT+Serif:i);
 
 section {
   
@@ -89,7 +84,7 @@ a:hover {
     <p><big>Matt Moocarme</big></p>
     <br>
     <br>
-  <h1 style="font-size:300%; color: #f2ca27;"><b>Sound Check</b></h1><br>
+  <h1 style="font-size:300%; color: #f2ca27;"><b>Jamify</b></h1><br>
     <p style="font-size:150%;">Learn to play your favorite songs</p>
   <!--<p class="grey">Scroll down to continue.-->
 </section>
@@ -110,10 +105,10 @@ a:hover {
 </section>
 
 <section style="text-align:center;padding-top:3em;">
-  <p>The solution is <h1 style="color: #f2ca27; font-size:200%"><big>Sound Check!</big></h1></p>
+  <p>The solution is <h1 style="color: #f2ca27; font-size:200%"><big>Jamify!</big></h1></p>
   <hr style="height:10px; visibility:hidden;" />
 
-    <p>Sound Check recommends songs based on listening preference <big style="color: #f2ca27">AND</big> skill level</p><br>
+    <p>Jamify recommends songs based on listening preference <big style="color: #f2ca27">AND</big> skill level</p><br>
     <img src="img/giphy.gif" style = "border:5px solid white">
 </section>
 
@@ -201,7 +196,7 @@ a:hover {
                   <u>Typical ROC Characteristics</u><br>
                </div><br>
                
-               <img src="img/ukuleleROC.png" width = "100%">
+               <img src="img/ukuleleROC.png" style="width:85%;border-radius:25px;">
           </div>
           
         </div>
@@ -211,45 +206,31 @@ a:hover {
 <section style="text-align:center;padding-top:2em;">
   <div class="container">
     <div class="header-content">
-      <h1 style="font-size:150%;">The Model Works!</h1>
-              
-
-   
+      <h1 style="font-size:150%;">Feature Coefficients Predict Easy & Hard Chords</h1>
+    </div>
+    
       <div class="row">
-          
-          <div class="col-sm-12" style = "text-align:center">
-              <div class="header-content">
-                  <u>Model Coefficients</u>
-               </div>
-               <div class="row" >
-                <div class = "col-sm-4" style = "display:inline-block">
-                  <img src="img/top5easy.png" width = "100%" style = "border:5px solid white">
-                </div>
-                <div class = "col-sm-4" style="font-size:100%;display:inline-block">
-                  <p>Easy chord - C</p>
-                  <p>High Coefficient for <i>novice</i> classification</p>
-                </div>
-                <div class = "col-sm-4" style = "display:inline-block;">
-                  <img src="img/uk_C.jpg" width = "83%" style = "border:5px solid white">
-                </div>
-               </div>
-               
-               <hr>
-               
-               <div class="row">
-                <div class = "col-sm-4" style = "display:inline-block">
-                  <img src="img/top5advanced.png" width = "100%" style = "border:5px solid white">
-                </div>
-                <div class = "col-sm-4"style="font-size:100%">
-                  <p>Hard chord - Eb2</p>
-                  <p>High Coefficient for <i>advanced</i> classification</p>
-                </div>
-                <div class = "col-sm-4" >
-                  <img src="img/uk_Eb2.jpg" width = "83%"  style = "border:5px solid white;">
-                </div>
-               </div>
-               
-          </div>
+        <div class = "col-sm-4" style = "display:inline-block">
+          <hr style="height:10px; visibility:hidden;" />
+          <h2><u>Feature Coefficients for "Easy" Classification bin</u></h2>
+          <img src="img/top5_3.png" height = "300px" style = "border:5px solid white; border-radius: 20px;">
+        </div>
+        <div class = "col-sm-4" style="font-size:100%;display:inline-block">
+          <br>
+          <br>
+          <p>Easy chord - C</p>
+          <p>High Coefficient for <i>novice</i> classification</p>
+          <br>
+          <p>Hard chord - Abm7</p>
+          <p>High Coefficient for <i>advanced</i> classification</p>
+        </div>
+        <div class = "col-sm-3" style = "display:inline-block;">
+          <br>
+          <br>
+          <img src="img/uk_C.jpg" width = "83%" style = "border:5px solid white">
+          <br>
+          <br>
+          <img src="img/uk_Abm7.jpg" width = "83%"  style = "border:5px solid white;">
         </div>
       </div>
 </section>
@@ -266,7 +247,17 @@ a:hover {
 <h1>Insight - Chord Progressions Identified</h1>
 <!--<h2>The progression of ukulele chords within songs</h2>-->
 
-<iframe src="http://www.mattmoocar.me/chord-plot/" width="640" height = "480" marginwidth="0" marginheight="0" scrolling="no"  frameBorder="0" style = :"-ms-zoom: 0.75; -moz-transform: scale(1.5); -moz-transform-origin: 0 0;-o-transform: scale(1.5); -o-transform-origin: 0 0; -webkit-transform: scale(1.5); -webkit-transform-origin: 0 0;"></iframe>
+<iframe src="http://www.mattmoocar.me/chord-plot/" width="600" height = "480" marginwidth="0" marginheight="0" scrolling="no"  frameBorder="0" style = :"-ms-transform: scale(0.25);
+    -moz-transform: scale(0.25);
+    -o-transform: scale(0.25);
+    -webkit-transform: scale(0.25);
+    transform: scale(0.25);
+
+    -ms-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0; "></iframe>
 </section>
 
 <section style="text-align:center;padding:2em;">
@@ -346,32 +337,15 @@ a:hover {
   </div>
 
 </section>
-<section style="text-align:center;padding:2em;">
-  <h1>Insight - Chord Progressions Identified</h1>
-  <!--<h2>The progression of ukulele chords within songs</h2>-->
+<section style="text-align:center;padding-top:3em;">
+  <h1>Recommendation Validation - MAP@100</h1>
 
-       
-<script type="text/javascript" src="js/bokehjs.js"></script>
-        
-        <body>
-        <div class="bk-root">
-            <div class="plotdiv" id="88879aac-3a89-4bbf-8524-7dd6ea2efa1d"></div>
-        </div>
-        
-        <script type="text/javascript" src="bokeh/MAPat100js.js"></script>
-        </body>
+ <div class="device-container">
+  <br>
+      <img src="img/test1.png" style = "border:5px solid white;width:50%;border-radius: 25px;" >
+ </div>
 </section>
-<section style="text-align:center;padding:2em;">
-  <h1>Insight - Chord Progressions Identified</h1>
-  <!--<h2>The progression of ukulele chords within songs</h2>-->    
-        
-        <div class="bk-root">
-            <div class="plotdiv" id="1eea14e6-2349-4554-9c1e-69a0c306bc0d"></div>
-        </div>
-        
-        <script type="text/javascript" src="bokeh/ukuleleChordCoefsjs.js"></script>
-        
-</section>
+
 <!--
 <section style="padding:5em 13em;">
   <p>Stack is made by <a href="http://bost.ocks.org/mike/" rel="author">Mike Bostock</a>
@@ -381,7 +355,7 @@ a:hover {
 </section>
 
 -->
-</bokehdy>
+
 <script src="js/d3.v3.min.js"></script>
 <script src="js/stack.v2.js"></script>
 
