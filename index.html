@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="vendor/device-mockups/device-mockups2.css">
 <link rel="stylesheet" href="vendor/device-mockups/device-mockups.css">
 <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet"> 
+<link href="css/bokeh.css" rel="stylesheet" type="text/css" />
+
 <title>Matt Moocarme - The Data Scientist you Should Hire</title>
 <style>
 
@@ -21,6 +23,16 @@ section {
   font-family: 'Exo', sans-serif;
   padding-top:2em;
 }
+html {
+    width: 100%;
+    height: 100%;
+  }
+  body {
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    background-color: black;
+  }
 
 h1 {
   font-family: 'Metal Mania', cursive;
@@ -335,36 +347,38 @@ a:hover {
 
 </section>
 <section style="text-align:center;padding:2em;">
-<h1>Insight - Chord Progressions Identified</h1>
-<!--<h2>The progression of ukulele chords within songs</h2>-->
+  <h1>Insight - Chord Progressions Identified</h1>
+  <!--<h2>The progression of ukulele chords within songs</h2>-->
 
-<link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-0.12.2.min.css" type="text/css" />
+<link href="css/bokeh.css" rel="stylesheet" type="text/css" />
         
 <script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-0.12.2.min.js"></script>
-<script type="text/javascript">
-    Bokeh.set_log_level("info");
-</script>
-        <style>
-          html {
-            width: 100%;
-            height: 100%;
-          }
-          body {
-            width: 90%;
-            height: 100%;
-            margin: auto;
-            background: url("img/twinkle_twinkle.png");
-          }
-        </style>
-    </head>
-    
+<script type="text/javascript">Bokeh.set_log_level("info");</script>
+        
         <body>
-        <div class="bk-root" style = ' background: url("img/twinkle_twinkle.png");'>
-            <div class="plotdiv" id="c1bcdcf1-4e5d-4b21-a31f-2f84440ba1cf"></div>
+        <div class="bk-root" style = "text-align:center;">
+            <div class="plotdiv" id="88879aac-3a89-4bbf-8524-7dd6ea2efa1d"></div>
         </div>
+        
+        <script type="text/javascript" src="bokeh/MAPat100js.js"></script>
         </body>
-        <script type="text/javascript" src="m1.js">
-        </script>
+</section>
+<section style="text-align:center;padding:2em;">
+  <h1>Insight - Chord Progressions Identified</h1>
+  <!--<h2>The progression of ukulele chords within songs</h2>-->
+
+<link href="css/bokeh.css" rel="stylesheet" type="text/css" />
+        
+<script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-0.12.2.min.js"></script>
+<script type="text/javascript">Bokeh.set_log_level("info");</script>
+        
+        <body>
+        <div class="bk-root" style = "text-align:center;">
+            <div class="plotdiv" id="1eea14e6-2349-4554-9c1e-69a0c306bc0d"></div>
+        </div>
+        
+        <script type="text/javascript" src="bokeh/ukuleleChordCoefsjs.js"></script>
+        </body>
 </section>
 <!--
 <section style="padding:5em 13em;">
@@ -378,6 +392,11 @@ a:hover {
 </body>
 <script src="js/d3.v3.min.js"></script>
 <script src="js/stack.v2.js"></script>
+
+        
+<script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-0.12.2.min.js"></script>
+<script type="text/javascript">Bokeh.set_log_level("info");</script>
+
 <script>
 function openCity(evt, cityName) {
     // Declare all variables
