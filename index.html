@@ -177,7 +177,7 @@ a:hover {
     <div class="header-content">
       <h1 style="font-size:150%;">Model Evaluation</h1><br>
     </div>
-      <div class="row"style = "text-align:center display:inline-block">
+      <div class="row"style = "text-align:center; display:inline-block">
           <div class="col-sm-5" style = "text-align:left; display:inline-block">
                <div class="header-content">
                   A Different Model For Each Instrument<br>
@@ -237,35 +237,35 @@ a:hover {
 
 
 <section style="text-align:center;padding:2em;">
-<h1>Insight - Distribution of Chords</h1>
-<!--<h2>A count of ukulele chords within songs</h2>-->
+  <h1>Insight - Distribution of Chords</h1>
+  <!--<h2>A count of ukulele chords within songs</h2>-->
 
-<iframe src="http://www.mattmoocar.me/ukulele-chord-count-plot/" width="940" height = "600" marginwidth="0" marginheight="0" scrolling="no"  frameBorder="0"  style = :"-ms-zoom: 0.75; -moz-transform: scale(0.75); -moz-transform-origin: 0 0;-o-transform: scale(0.75); -o-transform-origin: 0 0; -webkit-transform: scale(0.75); -webkit-transform-origin: 0 0;"></iframe>
+  <iframe src="http://www.mattmoocar.me/ukulele-chord-count-plot/" width="940" height = "600" marginwidth="0" marginheight="0" scrolling="no"  frameBorder="0"  style = :"-ms-zoom: 0.75; -moz-transform: scale(0.75); -moz-transform-origin: 0 0;-o-transform: scale(0.75); -o-transform-origin: 0 0; -webkit-transform: scale(0.75); -webkit-transform-origin: 0 0;"></iframe>
 </section>
 
 <section style="text-align:center;padding:2em;">
-<h1>Insight - Chord Progressions Identified</h1>
-<!--<h2>The progression of ukulele chords within songs</h2>-->
+  <h1>Insight - Chord Progressions Identified</h1>
+  <!--<h2>The progression of ukulele chords within songs</h2>-->
 
-<iframe src="http://www.mattmoocar.me/chord-plot/" width="600" height = "480" marginwidth="0" marginheight="0" scrolling="no"  frameBorder="0" ></iframe>
+  <iframe src="http://www.mattmoocar.me/chord-plot/" width="600" height = "480" marginwidth="0" marginheight="0" scrolling="no"  frameBorder="0" ></iframe>
 </section>
 
 <section style="text-align:center;padding:2em;">
 <h1>Demo</h1>
 
- <div class="device-container">
-                        <div class="device-mockup ipad_pro landscape white " style="display:inline-block; height:100px;">
-                            <div class="device">
-                                <div class="screen">
-                                    <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                                    <img src="img/demo-2.gif" class="img-responsive" alt="">
-                                </div>
-                                <div class="button">
-                                    <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+   <div class="device-container">
+      <div class="device-mockup ipad_pro landscape white " style="display:inline-block; height:100px;">
+          <div class="device">
+              <div class="screen">
+                  <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
+                  <img src="img/demo-2.gif" class="img-responsive" alt="">
+              </div>
+              <div class="button">
+                  <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+              </div>
+          </div>
+      </div>
+  </div>
 </section>
 <!-- zoom in on iframe content
 <iframe src="" style = :"-ms-zoom: 0.75; -moz-transform: scale(0.75); -moz-transform-origin: 0 0;-o-transform: scale(0.75); -o-transform-origin: 0 0; -webkit-transform: scale(0.75); -webkit-transform-origin: 0 0;"></iframe>
@@ -276,10 +276,10 @@ a:hover {
   <p id="follow-anchor" style="position:fixed;text-indent:-1.25em;">&larr; When this bar reaches the top,<br>the next slide will fade in.
 </section>
 -->
-<section id="lorenz" style="text-align:center;padding-top:0;">
+<section id="lorenz" style="text-align:center; padding-top:0;">
   <canvas></canvas>
   <h1 style="position:absolute;z-index:3;padding-top:1em;left:0;width:100%;text-shadow:0 1px 0 #000;">About Me</h1><br>
-  <div class = 'container'style="padding-top:4em;text-align:center;">
+  <div class = "container" style="padding-top:4em; text-align:center;">
     <div class = "row">
       <div class="col-sm-8" style = "text-align:left">
                <div class="header-content">
@@ -327,13 +327,13 @@ a:hover {
   </div>
 
 </section>
-<section style="text-align:center;padding-top:3em;">
-  <h1>Recommendation Validation - MAP@100</h1>
+  <section style="text-align:center;padding-top:3em;">
+    <h1>Recommendation Validation - MAP@100</h1>
 
- <div class="device-container">
-  <br>
-      <img src="img/test1.png" style = "border:5px solid white;width:50%;border-radius: 25px;" >
- </div>
+   <div class="device-container">
+    <br>
+        <img src="img/test1.png" style = "border:5px solid white;width:50%;border-radius: 25px;" >
+   </div>
 </section>
 
 <!--
@@ -352,26 +352,7 @@ a:hover {
         
 
 <script>
-function openCity(evt, cityName) {
-    // Declare all variables
-    var i, tabcontent, tablinks;
 
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Show the current tab, and add an "active" class to the link that opened the tab
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
 var mystack = stack()
     .on("activate", activate)
     .on("deactivate", deactivate);
