@@ -64,6 +64,9 @@ a:hover {
 .classname{
   height: 10%;
 }
+td{
+  font-size: 90%;
+}
 
 #bootstrap-overrides  .classname {
             height: 50px;
@@ -87,11 +90,11 @@ a:hover {
     <br>
     <br>
   <h1 style="font-size:300%; color: #f2ca27;"><b>Jamify</b></h1><br>
-    <p style="font-size:150%;">Learn to play your favorite songs</p>
+    <p style="font-size:150%;">Learn to play your favorite new songs</p>
   <!--<p class="grey">Scroll down to continue.-->
 </section>
 
-<section style="padding:5em 9em;">
+<section style="padding:3em 9em;">
   <h1 style="color: #f2ca27; font-size: 200%"><b>Problem:</b></h1>
     <p><br>Learning how to play instruments is hard. 
     <br>You're motivated to play songs you enjoy listening to, but they're often out of your skill level
@@ -124,15 +127,12 @@ a:hover {
                <!--<div class="header-content">
                   <u>Recommendation engine</u><br>
                </div>-->
-            <br>
-            <br>
-
+            
                <p>2.4Gb subset of the Million Song Dataset</p><br>
                <p>Latent semantic analysis to quickly perform cosine user-user similarity via singular value decomposition</p>
           </div>
           <div class="col-lg-6">
-            <br>
-              <img src="img/mf3.jpg" width = "100%" style = "border:5px solid white; border-radius:20px;">
+              <img src="img/mf3.jpg" width = "130%" style = "border:5px solid white; border-radius:20px;">
           </div>
         </div>
       </div>
@@ -150,7 +150,7 @@ a:hover {
                 Tablature Notation
                <img src="img/tabs_ex2_cropped.png" width = "100%" style = "border:5px solid white">
           </div>
-          <div class="col-lg-6" style = "text-align:left">
+          <div class="col-lg-6" style = "text-align:left; padding-left:40px;">
               <div class="header-content">
                   <u>Song difficulty evaluator</u><br>
                </div>
@@ -200,7 +200,7 @@ a:hover {
                   <u>Typical ROC Characteristics</u><br>
                </div><br>
                
-               <img src="img/ukuleleROC.png" style="width:85%;border-radius:25px;">
+               <img src="img/ukuleleROC.png" style="width:130%;border-radius:25px;">
           </div>
           
         </div>
@@ -215,31 +215,33 @@ a:hover {
     
       <div class="row">
         <div class = "col-sm-4" style = "display:inline-block">
-          <hr style="height:10px; visibility:hidden;" />
-          <h2><u>Feature Coefficients for "Easy" Classification bin</u></h2>
-          <img src="img/top5_3.png" height = "300px" style = "border:5px solid white; border-radius: 20px;">
+          <hr style="height:-10px; visibility:hidden;" />
+          <p><u>Coefficients for "novice" </u></p>
+          <img src="img/top5_3.png" style = "width:120%; border-radius: 20px;">
         </div>
-        <div class = "col-sm-4" style="font-size:100%;display:inline-block">
-          <br>
-          <br>
-          <br>
-          <p><i class="fa fa-arrow-right" aria-hidden="true"></i> C predicted easy <i class="fa fa-arrow-right" aria-hidden="true"></i>
-</p>
-          <br>
-          <br>
-          <br>
-          
-          <p><i class="fa fa-arrow-right" aria-hidden="true"></i> Abm7 not predicted easy <i class="fa fa-arrow-right" aria-hidden="true"></i>
-</p>
+        <div class = "col-sm-7" style="font-size:100%;display:inline-block; text-align:right; "><br>
+          <div class = "container" style = "padding-right: 4em;">
+            <div class = 'row'>
+              <div class = "col-sm-6" style="padding-left: 5%;">
+                <p><br><br><i class="fa fa-arrow-right" aria-hidden="true"></i> C predicted easy <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </div>
+              <div class = "col-sm-6">
+                 <img src="img/uk_C.jpg" width = "80%" style = "border:5px solid white"></p>
+              </div>
+            </div>
+            </div>
+          <div class="container" style = "padding-right: 4em;">
+            <div class = "row">
+              <div class = "col-sm-6">
+                <p><br><i class="fa fa-arrow-right" aria-hidden="true"></i> Abm7 not predicted easy <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </div>
+              <div class = "col-sm-6">
+                <img src="img/uk_Abm7.jpg" width = "80%"  style = "border:5px solid white;"></p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class = "col-sm-3" style = "display:inline-block;">
-          <br>
-          <br>
-          <img src="img/uk_C.jpg" width = "83%" style = "border:5px solid white">
-          <br>
-          <br>
-          <img src="img/uk_Abm7.jpg" width = "83%"  style = "border:5px solid white;">
-        </div>
+        
       </div>
 </section>
 
@@ -254,8 +256,22 @@ a:hover {
 <section style="text-align:center;padding:2em;">
   <h1>Insight - Chord Progressions Identified</h1>
   <!--<h2>The progression of ukulele chords within songs</h2>-->
-
-  <iframe src="http://www.mattmoocar.me/chord-plot/" width="600" height = "480" marginwidth="0" marginheight="0" scrolling="no"  frameBorder="0" ></iframe>
+<div class="container">
+  <div class = "row">
+    <div class = "col-sm-8">
+      <iframe src="http://www.mattmoocar.me/chord-plot/guitar/" width="940" height = "600" marginwidth="0" marginheight="0" scrolling="no"  frameBorder="0" ></iframe>
+    </div>
+    <div class = "col-sm-4" style = "text-align:center; font-size:65%">
+      <br>
+      <p style="font-size:150%; color:#f2ca27">D-A-Bm-G</p>
+      <p>Journey-Don't Stop Believin'</p>
+      <p>MGMT-Kids</p>
+      <p>A-Ha - Take On Me</p>
+      <p>Lady Gaga - Paparazzi</p>
+      <p>Jason Mraz - I'm Yours</p>
+    </div>
+  </div>
+</div>
 </section>
 
 <section style="text-align:center;padding:2em;">
