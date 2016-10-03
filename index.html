@@ -129,7 +129,7 @@ td{
                </div>-->
             
                <p>2.4Gb subset of the Million Song Dataset</p><br>
-               <p>Latent semantic analysis to quickly perform cosine user-user similarity via singular value decomposition</p>
+               <p>Latent semantic analysis to quickly perform cosine similarity via singular value decomposition</p>
           </div>
           <div class="col-lg-6">
               <img src="img/mf3.jpg" width = "130%" style = "border:5px solid white; border-radius:20px;">
@@ -350,37 +350,69 @@ td{
   </div>
 
 </section>
-  <section style="text-align:center;padding-top:3em;">
-    <h1>Recommendation Validation - MAP@100</h1>
+<section style="text-align:center;padding-top:3em;">
+    <h1>This is <u>NOT</u> a Random Song Generator - MAP@100</h1>
 
    <div class="device-container">
     <br>
         <img src="img/test1.png" style = "border:5px solid white;width:50%;border-radius: 25px;" >
+        <p>Random = 1.7424e-6</p>
    </div>
 </section>
 
-</section>
-  <section style="text-align:center;padding-top:3em;">
-    <h1>Other Model accuracies</h1>
-    <p>Trained on 20,000 Guitar Tabs</p>
+<section style="text-align:center;padding-top:3em;">
+    <h1>Item-Item > User-User Similarity - MAP@100</h1>
+
    <div class="device-container">
     <br>
-       <table class="table table-hover">
-               <tr style="color:#f2ca27;"><th>Model</th><th>5-fold CV Accuracy</th><th>Test Accuracy</th></tr>
-               <tr><td>Logistic Regression - L1 penalty</td><td>XX%</td><td>yy%</td></tr>
-               <tr><td>Logistic Regression - L2 penalty</td><td>XX%</td><td>yy%</td></tr>
-               <tr><td>Nearest Neighbours</td><td>XX%</td><td>yy%</td></tr>
-               <tr><td>Linear SVM</td><td>XX%</td><td>yy%</td></tr>
-               <tr><td>RBF SVM</td><td>XX%</td><td>yy%</td></tr>
-               <tr><td>Gaussian Process</td><td>XX%</td><td>yy%</td></tr>
-               <tr><td>Decision Trees</td><td>XX%</td><td>yy%</td></tr>
-               <tr><td>Random Forest</td><td>XX%</td><td>yy%</td></tr>
-               <tr><td>Neural Net</td><td>XX%</td><td>yy%</td></tr>
-               <tr><td>Adaboost</td><td>XX%</td><td>yy%</td></tr>
-               <tr><td>Naive Bayes</td><td>XX%</td><td>yy%</td></tr>
-               <tr><td>Quadraic Discriminant</td><td>XX%</td><td>yy%</td></tr>
-               </table>
+        <img src="img/implicit_mf_comp.png" style = "border:5px solid white;width:50%;border-radius: 25px;" >
+        <p>Random = 1.7424e-6</p>
    </div>
+</section>
+
+
+</section>
+<section style="text-align:center;padding-top:3em;">
+    <h1>Other Model Accuracies</h1>
+    <p>Trained on 20,000 Guitar Tabs</p>
+   
+    <br>
+       <table class="table table-hover" style = "width:100%; font-size:60%; font-align:center;">
+           <tr style="color:#f2ca27;" align="center" ><th align="center" >Model</th><th align="center">5-fold CV Accuracy</th><th align="center">Test Accuracy</th></tr>
+           <tr><td>Logistic Regression - L1 penalty</td><td>43.063 &plusmn; 10.614%</td><td>47.618%</td></tr>
+           <tr><td>Logistic Regression - L2 penalty</td><td>48.025 &plusmn; 5.789%</td><td>52.512%</td></tr>
+           <tr><td>Nearest Neighbours</td><td>49.788 &plusmn; 1.449%</td><td>50.800%</td></tr>
+           <tr><td>Linear SVM</td><td>49.940 &plusmn; 2.034%</td><td>49.266%</td></tr>
+           <tr><td>RBF SVM</td><td>57.712 &plusmn; 2.420%</td><td>57.052%</td></tr>
+           <tr><td>Decision Trees</td><td>57.871 &plusmn; 0.806%</td><td>56.733%</td></tr>
+           <tr><td>Random Forest</td><td>58.573 &plusmn; 1.457%</td><td>58.807%</td></tr>
+           <tr><td>Adaboost</td><td> 59.331 &plusmn; 1.326%</td><td>60.179%</td></tr>
+           <tr><td>Naive Bayes</td><td>50.850 &plusmn; 2.180%</td><td>51.659%</td></tr>
+           <tr><td>Quadratic Discriminant</td><td>47.618 &plusmn; 9.749%</td><td>50.479%</td></tr>
+        </table>
+  
+</section>
+
+<section style="text-align:center;padding-top:3em;">
+  <h1>Exploratory Data Analysis</h1>
+
+   <div class="device-container">
+    
+        <img src="img/EDA_tabTypes.png" style = "width:50%;border-radius: 25px;" ><br>
+        <hr style="height:10px; visibility:hidden;" />
+        <img src="img/EDA_diffNum.png" style = "width:50%;border-radius: 25px;" >
+        
+   </div>
+</section>
+
+<section style="text-align:center;padding-top:2em;">
+    <h1>The Most General Song</h1><br>
+    <p>Recommendation Using SVD with Rank 1</p>
+    <p>Marvin Sease - Show me what you got</p>
+   
+    <br>
+       <img src="img/marv.png" width="30%">
+  
 </section>
 <!--
 <section style="padding:5em 13em;">
